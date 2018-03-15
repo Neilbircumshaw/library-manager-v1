@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    title Overdue Books
+    link(rel='stylesheet', href='stylesheets/style.css')
+  nav
+    ul
+      li
+        a(href='/books/all') Books
+      li
+        a(href='/patrons/all') Patrons
+      li
+        a(href='/loan/all') Loans
+  body
+    h1 Overdue Books
+    p
+      a.button(href='/books/new') Create New Book
+    p
+      | Filters 
+      a(href='/books/all') All
+      |  
+      a(href='/books/overdue') Overdue
+      |  
+      a(href='/books/checked_out') Checked Out
+    table
+      thead
+        tr
+          th Title
+          th Author
+          th Genre
+          th Year Released
+      tbody
+        tr
+          td
+            a(href='/books/details') Harry Potter and the Goblet of Fire
+          td J.K. Rowling
+          td Fantasy
+          td 2000
+        tr
+          td
+            a(href='/books/details') A Brief History of Time
+          td Stephen Hawking
+          td Non Fiction
+          td 1988
+        tr
+          td
+            a(href='/books/details') The Universe in a Nutshell
+          td Stephen Hawking
+          td Non Fiction
+          td 2001
