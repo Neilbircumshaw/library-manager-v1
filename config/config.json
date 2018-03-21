@@ -1,14 +1,17 @@
 {
   "development": {
     "storage": "library.db",
-    "dialect": "sqlite"
+    "dialect": "sqlite",
+    "operatorsAliases": "Sequelize.Op"
   },
   "test": {
     "storage": "test.db",
-    "dialect": "sqlite"
+    "dialect": "sqlite",
+    "operatorsAliases": "Sequelize.Op"
   },
   "production": {
     "storage": "production.db",
-    "dialect": "sqlite"
+    "dialect": "sqlite",
+    "operatorsAliases": "Sequelize.Op"
   }
 }

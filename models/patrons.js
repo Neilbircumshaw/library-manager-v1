@@ -1,7 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var patrons = sequelize.define('patrons', {
-    id: DataTypes.INTEGER,
+    id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true},
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     address: DataTypes.STRING,

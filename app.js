@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const sequelize = require("./models").sequelize;
+const books = require("./models").books;
+
 sequelize.sync().then(function(){
 app.listen(3000);
 });
@@ -14,6 +16,13 @@ app.get("/", (req,res) => {
 app.get("/books/new", (req,res) => {
   res.render("new_book");
 });
+
+app.post("/books/new", (req, res, next) => {
+  books.create(req.body)
+    .then(book => {
+    return res.redirect("/books/all");
+    console.log(req.body);
+  })});
 
 app.get("/books/all", (req,res) => {
   res.render("all_books");

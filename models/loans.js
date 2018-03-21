@@ -1,7 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var loans = sequelize.define('loans', {
-    id: DataTypes.INTEGER,
+    id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true},
     book_id: DataTypes.INTEGER,
     patron_id: DataTypes.INTEGER,
     loaned_on: DataTypes.DATE,
