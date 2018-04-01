@@ -32,52 +32,15 @@ html
           th Returned on
           th Action
       tbody
+       each loan in loans
         tr
           td
-            a(href='/books/details') Emma
+            a(href='/books/details/'+ loan.book_id)= loan.books.title
           td
-            a(href='/patrons/details') Dave McFarland
-          td 2015-12-10
-          td 2020-10-20
+            a(href='/patrons/details'+ loan.patron_id)= loan.patrons.first_name + " " + loan.patrons.last_name
+          td= loan.loaned_on
+          td= loan.return_by
           td
           td
             a.button(href='/books/returned') Return Book
-        tr
-          td
-            a(href='/books/details') Harry Potter and the Goblet of Fire
-          td
-            a(href='/patrons/details') Andrew Chalkley
-          td 2015-12-11
-          td 2015-12-18
-          td
-          td
-            a.button(href='/books/returned') Return Book
-        tr
-          td
-            a(href='/books/details') A Brief History of Time
-          td
-            a(href='/patrons/details') Andrew Chalkley
-          td 2015-12-12
-          td 2015-12-19
-          td
-          td
-            a.button(href='/books/returned') Return Book
-        tr
-          td
-            a(href='/books/details') The Universe in a Nutshell
-          td
-            a(href='/patrons/details') Alena Holligan
-          td 2015-12-13
-          td 2015-12-20
-          td
-          td
-            a.button(href='/books/returned') Return Book
-        tr
-          td
-            a(href='/books/details') The Martian
-          td
-            a(href='/patrons/details') Michael Poley
-          td 2015-12-13
-          td 2015-12-20
-          td 2015-12-17
-          td
+        

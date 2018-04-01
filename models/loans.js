@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     returned_on: DataTypes.DATE
   }, {});
   loans.associate = function(models) {
-    // associations can be defined here
+  
   };
   return loans;
 };
