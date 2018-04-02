@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var patrons = sequelize.define('patrons', {
     id: {
     type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true},
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     zip_code: DataTypes.INTEGER
   }, {});
   patrons.associate = function(models) {
-    // associations can be defined here
+    patrons.hasMany(models.loans, { foreignKey: 'patron_id' });
   };
   return patrons;
 };

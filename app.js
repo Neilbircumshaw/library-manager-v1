@@ -136,14 +136,23 @@ app.post("/loan/new", (req, res, next) => {
 
 
 app.get('/loan/all', (req, res, next) => {
-	loans.findAll({include: [
-        {model: patrons},
-        {model: books}
-      ]})
+	loans.findAll({
+         include: [books, patrons]
+      })
     .then(results => {
       res.render("all_loans", {loans: results});
   }).catch(err => next(err))
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
