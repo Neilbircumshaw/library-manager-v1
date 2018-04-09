@@ -1,27 +1,27 @@
 doctype html
 html
   head
-    title Loans
-    link(rel='stylesheet', href='stylesheets/style.css')
+    title Loan
+    link(rel='stylesheet', href='../stylesheets/style.css')
   nav
     ul
       li
-        a(href='/books/all') Books
+        a(href='/books/all') Book
       li
-        a(href='/patrons/all') Patrons
+        a(href='/patrons/all') Patron
       li
-        a(href='/loan/all') Loans
+        a(href='/loans/all') Loan
   body
-    h1 Loans
+    h1 Loan
     p
-      a.button(href='/loan/new') Create New Loan
+      a.button(href='/loans/new') Create New Loan
     p
       | Filters 
-      a(href='/loan/all') All
+      a(href='/loans/all') All
       |  
-      a(href='/loan/overdue_loans') Overdue
+      a(href='/loans/overdue_loan') Overdue
       |  
-      a(href='/loan/checked_loans') Checked Out
+      a(href='/loans/checked_loan') Checked Out
     table
       thead
         tr
@@ -35,12 +35,17 @@ html
        each loan in loans
         tr
           td
-            a(href='/books/details/'+ loan.book_id)= loan.books.title
+            a(href='/books/details/'+ loan.book_id)= loan.Book.title
           td
-            a(href='/patrons/details'+ loan.patron_id)= loan.patrons.first_name + " " + loan.patrons.last_name
-          td= loan.loaned_on
-          td= loan.return_by
+            a(href='/patrons/details/'+ loan.patron_id)= loan.Patron.first_name + " " + loan.Patron.last_name
+            
+          td= loan.loaned_on.toString().slice(0,15)
+          td= loan.return_by.toString().slice(0,15)
+          if loan.returned_on 
+           td= loan.returned_on.toString().slice(0,15)
+          else 
+           td 
           td
-          td
-            a.button(href='/books/returned') Return Book
+           if !loan.returned_on
+            a.button(href='/books/returned/' + loan.id) Return Book
         

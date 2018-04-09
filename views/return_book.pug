@@ -2,32 +2,28 @@ doctype html
 html
   head
     title Return Book
-    link(rel='stylesheet', href='stylesheets/style.css')
+    link(rel='stylesheet',type="text/css" href='../stylesheets/style.css')
   nav
     ul
       li
-        a(href='/books/all') Books
+        a(href='/books/all') Book
       li
-        a(href='/patrons/all') Patrons
+        a(href='/patrons/all') Patron
       li
-        a(href='/loan/all') Loans
+        a(href='/loans/all') Loan
   body
     h1 Patron: Return Book
     p
-      strong Book Title: 
-      | Harry Potter and the Goblet of Fire
+      strong Book Title: #{loan.Book.title}      
     p
-      strong Loaned By: 
-      | Andrew Chalkley
+      strong Loaned By: #{loan.Patron.first_name} #{loan.Patron.last_name}
     p
-      strong Loaned On: 
-      | 2015-12-11
+      strong Loaned On: #{loan.loaned_on.toString().slice(0,15)}
     p
-      strong Return By: 
-      | 2015-12-18
-    form
+      strong Return By: #{loan.return_by.toString().slice(0,15)}
+    form(method='post' action="/books/returned/" + loan.id)
       p
         label(for='returned_on') Returned on:
-        input#returned_on(type='text', value='2020-10-10')
+        input#returned_on(type='text', name="returned_on" value= returnDate)
       p
         input(type='submit', value='Return Book')

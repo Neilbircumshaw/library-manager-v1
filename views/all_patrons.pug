@@ -1,18 +1,19 @@
 doctype html
 html
   head
-    title Patrons
-    link(rel='stylesheet', href='stylesheets/style.css')
+    title Patron
+    link(rel="stylesheet", href="../stylesheets/style.css")
+     
   nav
     ul
       li
-        a(href='/books/all') Books
+        a(href='/books/all') Book
       li
-        a(href='/patrons/all') Patrons
+        a(href='/patrons/all') Patron
       li
-        a(href='/loan/all') Loans
+        a(href='/loans/all') Loan
   body
-    h1 Patrons
+    h1 Patron
     p
       a.button(href='/patrons/new') Create New Patron
     table
@@ -27,7 +28,7 @@ html
        each patron in patrons
         tr
           td
-            a(href='/patrons/details')= patron.first_name + " " + patron.last_name
+            a(href='/patrons/details/'+ patron.id)= patron.first_name + " " + patron.last_name
           td= patron.address
           td= patron.email
           td= patron.library_id

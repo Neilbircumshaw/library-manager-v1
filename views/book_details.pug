@@ -1,33 +1,33 @@
 doctype html
 html
   head
-    title A Brief History of Time
-    link(rel='stylesheet', href='stylesheets/style.css')
+    title Book details
+    link(rel='stylesheet', href='../stylesheets/style.css')
   nav
     ul
       li
-        a(href='/books/all') Books
+        a(href='/books/all') Book
       li
-        a(href='/patrons/all') Patrons
+        a(href='/books/all') Patron
       li
-        a(href='/loan/all') Loans
+        a(href='/loans/all') Loan
   body
     h1 Book: #{book.title}
-    form
+    form(method="post")
       p
         label(for='title') Title
-        input#title(type='text', value= book.title)
+        input#title(type='text', name="title", value= book.title)
       p
         label(for='author') Author
-        input#author(type='text', value= book.author)
+        input#author(type='text', name="author", value= book.author)
       p
         label(for='genre') Genre
-        input#genre(type='text', value= book.genre)
+        input#genre(type='text', name="genre", value= book.genre)
       p
         label(for='first_published') First Published
-        input#first_published(type='text', value= book.first_published)
+        input#first_published(type='text', name="first_published", value= book.first_published)
       p
-        input(type='submit', value='Update')
+        input(type='submit', value='Update')        
     h2 Loan History
     table
       thead
@@ -39,13 +39,18 @@ html
           th Returned on
           th Action
       tbody
+       each loan in loans
         tr
           td
-            a(href='/books/details')= book.title
+            a(href='/books/details/' + book.id)= book.title
           td
-            a(href='/patrons/details') Andrew Chalkley
-          td 2015-12-12
-          td 2015-12-19
+            a(href='/patrons/details/' + loan.patron_id)= loan.Patron.first_name + " " + loan.Patron.last_name
+          td= loan.loaned_on.toString().slice(0,15)
+          td= loan.return_by.toString().slice(0,15)
+          if loan.returned_on 
+           td= loan.returned_on.toString().slice(0,15)
+          else 
+           td 
           td
-          td
-            a.button(href='/books/returned') Return Book
+           if !loan.returned_on
+            a.button(href='/books/returned/' + loan.id) Return Book

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var books = sequelize.define('books', {
+  var Book = sequelize.define('Book', {
     id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     genre: DataTypes.STRING,
     first_published: DataTypes.INTEGER
   }, {});
-  books.associate = function(models) {
-  books.hasMany(models.loans, { foreignKey: 'book_id' });
+  Book.associate = function(models) {
+  Book.hasMany(models.Loan, { foreignKey: 'book_id' });
   };
-  return books;
+  return Book;
 };
