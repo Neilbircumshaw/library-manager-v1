@@ -16,10 +16,6 @@ const patronRoutes = require('./routes/patrons');
 const loanRoutes = require('./routes/loans');
 
 
-app.use(homePageRoute);
-app.use(bookRoutes);
-app.use(patronRoutes);
-app.use(loanRoutes);
 
 
 app.use(express.static("public"));
@@ -33,3 +29,11 @@ app.listen(3000);
 });
 
 app.set("view engine", "pug");
+
+app.use(homePageRoute);
+app.use(bookRoutes);
+app.use(patronRoutes);
+app.use(loanRoutes);
+app.get('*', (req, res, next) => {
+  res.render("404_error");
+});

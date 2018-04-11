@@ -92,3 +92,11 @@ input {
 input[type=text], select {
   margin-left: 10px;
 }
+
+.error {
+display: block;
+margin-left:auto;
+margin-right: auto;
+width: 40%;
+border-radius: 50%
+}

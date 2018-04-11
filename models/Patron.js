@@ -5,12 +5,30 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true},
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    address: DataTypes.STRING,
-    email: DataTypes.STRING,
-    library_id: DataTypes.STRING,
-    zip_code: DataTypes.INTEGER
+    first_name: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: { msg: 'First name required' }
+  }},
+    last_name: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: { msg: 'Last name required' }
+  }},
+     address: {
+      type: DataTypes.STRING,
+      validate: { notEmpty: { msg: 'Address required' }
+  }},
+     email: {
+      type: DataTypes.STRING,
+      validate: { notEmpty: { msg: 'Email required' }
+  }},
+     library_id: {
+       type: DataTypes.STRING,
+       validate: { notEmpty: { msg: 'Library_id required' }
+  }},
+     zip_code: {
+      type: DataTypes.INTEGER,
+      validate: { notEmpty: { msg: 'zipcode required' }
+  }}
   }, {});
   Patron.associate = function(models) {
     Patron.hasMany(models.Loan, { foreignKey: 'patron_id' });
