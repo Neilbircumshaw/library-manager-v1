@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         patron_id: DataTypes.INTEGER,
         loaned_on: {
             type: DataTypes.DATE,
-            validate: { notEmpty: { msg: 'Loaned on date required'}
+            validate: { notEmpty: { msg: 'Loaned on date required.'}, isDate: {msg: "Please enter a valid date."}
             }},
         return_by: {
             type: DataTypes.DATE,
-            validate: { notEmpty: { msg: 'return by date required'}
+            validate: { notEmpty: { msg: 'return by date required.'}, isDate: {msg: "Please enter a valid date."}
             }},
         returned_on: {
             type: DataTypes.DATE,

@@ -1,16 +1,5 @@
-doctype html
-html
-  head
-    title New Patron
-    link(rel='stylesheet', href='../stylesheets/style.css')
-  nav
-    ul
-      li
-        a(href='/books/all') Book
-      li
-        a(href='/patrons/all') Patron
-      li
-        a(href='/loans/all') Loan
+extends layout.pug
+block content
   body
     h1 New Patron
     if errors

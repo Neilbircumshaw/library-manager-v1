@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     primaryKey: true},
     first_name: {
         type: DataTypes.STRING,
-        validate: { notEmpty: { msg: 'First name required' }
+        validate: { notEmpty: { msg: 'First name required' }, isAlpha:{msg: "Please enter a valid name!"}
   }},
     last_name: {
         type: DataTypes.STRING,
-        validate: { notEmpty: { msg: 'Last name required' }
+        validate: { notEmpty: { msg: 'Last name required' }, isAlpha:{msg: "Please enter a valid name!"}
   }},
      address: {
       type: DataTypes.STRING,
@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
   }},
      email: {
       type: DataTypes.STRING,
-      validate: { notEmpty: { msg: 'Email required' }
+      validate: { notEmpty: { msg: 'Email required' },  isEmail: {msg: "Please enter a valid email!"}
   }},
      library_id: {
        type: DataTypes.STRING,
-       validate: { notEmpty: { msg: 'Library_id required' }
+       validate: { notEmpty: { msg: 'Library_id required' }, contains:{args: "MCL", msg:"Our Library card starts with MCL!"} 
   }},
      zip_code: {
       type: DataTypes.INTEGER,

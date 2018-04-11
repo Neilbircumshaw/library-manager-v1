@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
       }},
       author: {
         type: DataTypes.STRING,
-        validate: { notEmpty: { msg: 'The author is required' }
+        validate: { notEmpty: { msg: 'The author is required' }, isAlpha:{msg: "Please enter a valid Author!"}
       }},
       genre: {
         type: DataTypes.STRING,
-        validate: { notEmpty: { msg: 'The genre is required' }
+        validate: { notEmpty: { msg: 'The genre is required' }, isAlpha:{msg: "Please enter a valid genre!"}
       }},
       first_published: {
         type: DataTypes.INTEGER,
-      validate: { notEmpty: { msg: 'First published is required' }
+      validate: { notEmpty: { msg: 'First published is required' }, isNumeric: {msg: "Please enter a valid date. Just the year please!"}
     }}
     },
     {}

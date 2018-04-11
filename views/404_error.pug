@@ -1,15 +1,4 @@
-doctype html
-html
-  head
-    title Book
-    link(rel='stylesheet', href='../stylesheets/style.css', type='text/css')
-  nav
-    ul
-      li
-        a(href='/books/all') Book
-      li
-        a(href='/patrons/all') Patron
-      li
-        a(href='/loans/all') Loan
+extends layout.pug
+block content
   div
     img(src='../images/404.jpg', alt='404 not found', class="error")
