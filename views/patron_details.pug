@@ -2,6 +2,11 @@ extends layout.pug
 block content
   body
     h1 Patron: #{patron.first_name + " " + patron.last_name}
+    if errors
+     ul
+      each error in errors
+        li
+          h4(style='color: red')= error.message
     form(method="post")
       p
         label(for='first_name') First Name

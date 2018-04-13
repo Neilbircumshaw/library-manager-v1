@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             }},
         returned_on: {
             type: DataTypes.DATE,
-            timestamps: false
+            validate: { notEmpty: { msg: 'return by date required.'}, isDate: {msg: "Please enter a valid date."}}
         }}, {});
     Loan.associate = function(models) {
         Loan.belongsTo(models.Book, {

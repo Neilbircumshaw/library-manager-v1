@@ -2,6 +2,11 @@ extends layout.pug
 block content
   body
     h1 Book: #{book.title}
+    if errors
+     ul
+      each error in errors
+        li
+          h4(style='color: red')= error.message
     form(method="post")
       p
         label(for='title') Title
@@ -18,6 +23,7 @@ block content
       p
         input(type='submit', value='Update')        
     h2 Loan History
+    
     table
       thead
         tr

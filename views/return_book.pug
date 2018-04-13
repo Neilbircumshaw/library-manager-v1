@@ -2,6 +2,11 @@ extends layout.pug
 block content
   body
     h1 Patron: Return Book
+    if errors
+     ul
+      each error in errors
+        li
+          h4(style='color: red')= error.message
     p
       strong Book Title: #{loan.Book.title}      
     p

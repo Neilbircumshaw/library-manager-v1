@@ -64,7 +64,10 @@ router.get("/patrons/details/:id", (req, res, next) => {
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*find one patron where id = the req.params.id then with the info submited by the form, update this row in the database. then redirect to all patrons.*/
+/*find one patron where id = the req.params.id then with the info submited by the form, update this row in the database. then redirect to all patrons. with my
+error I didn't add a new instance with the build method because this would actaully have the h1 element to whatever so input or not input temporarily. so
+in this case when the the patron's details page is re-rendered the orginal persons info is still in the form, unlike when I create an instance and it stays
+like how the person input it before the form was submitted. */
 
 router.post("/patrons/details/:id", (req, res ,next) => {
    Patron.findOne({
@@ -74,7 +77,18 @@ router.post("/patrons/details/:id", (req, res ,next) => {
 
    }).then(loan => {
     return res.redirect("/patrons/all")
-   })
+   }).catch(function(err) {
+         if(err.name === "SequelizeValidationError") {
+           Loan.findAll({
+             where: {patron_id: req.params.id},
+             include: [Book, Patron]
+           }).then(loan =>{
+             Patron.findOne({
+               where: {id: req.params.id},
+             }).then(results => {
+           res.render("patron_details", {errors: err.errors, patron: results, loans: loan});
+         })})}
+       });
 
 })
 

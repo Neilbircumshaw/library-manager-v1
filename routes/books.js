@@ -126,7 +126,17 @@ router.post("/books/details/:id", (req, res ,next) => {
 
    }).then(loan => {
     return res.redirect("/books/all")
-   })
+   }).catch(function(err) {
+         if(err.name === "SequelizeValidationError") {
+           Loan.findAll({
+             where: {book_id: req.params.id},
+             include: [Book, Patron]
+           }).then(loan =>{
+           const book = Book.build(req.body);
+           console.log(book)
+           res.render("book_details", {errors: err.errors, book: book, loans: loan});
+         })}
+       });
  })
 
  /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -156,7 +166,15 @@ router.post("/books/returned/:id", (req, res ,next) => {
 
    }).then(loan => {
     return res.redirect("/loans/all")
-   })
+   }).catch(function(err) {
+         if(err.name === "SequelizeValidationError") {
+           Loan.findOne({
+              where: { id: req.params.id },
+              include: [Book, Patron]
+           }).then(results =>{
+           res.render("return_book", {errors: err.errors, loan: results, returnDate: dateNow});
+         })}
+       });
  })
 
  /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
