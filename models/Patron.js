@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }},
      library_id: {
        type: DataTypes.STRING,
-       validate: { notEmpty: { msg: 'Library_id required' }, contains:{args: "MCL", msg:"Our Library card starts with MCL!"} 
+       validate: { notEmpty: { msg: 'Library_id required' }, contains:{args: "MCL", msg:"Our Library card starts with MCL!"}
   }},
      zip_code: {
       type: DataTypes.INTEGER,

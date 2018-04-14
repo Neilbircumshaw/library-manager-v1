@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       }},
       author: {
         type: DataTypes.STRING,
-        validate: { notEmpty: { msg: 'The author is required' }, isAlpha:{msg: "Please enter a valid Author!"}
+        validate: { notEmpty: { msg: 'The author is required' }
       }},
       genre: {
         type: DataTypes.STRING,
